@@ -22,3 +22,8 @@ def add_todo(request):
     length_of_todos = Todo.objects.all().count()
     #print(length_of_todos)
     return HttpResponseRedirect("/")
+
+@csrf_exempt
+def delete_todo(request, todo_id):
+    Todo.objects.get(id=todo_id).delete()
+    return HttpResponseRedirect("/")
